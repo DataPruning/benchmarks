@@ -1,0 +1,13 @@
+# Ignore generated dataset files (download from source or generate via runner)
+*.csv
+pruned/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

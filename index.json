@@ -1,0 +1,4 @@
+{
+  "benchmarks": [],
+  "_note": "Run the benchmark runner to populate this file: python -m benchmark_runner.run --config benchmark_runner/datasets.json --output ../benchmarks-public --runs 3"
+}
