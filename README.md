@@ -1,86 +1,108 @@
 # DataPruning Official Benchmarks
 
-Reproducible benchmark results for [DataPruning](https://datapruning.com) — a data optimization algorithm that removes redundant training samples while preserving model performance.
+Reproducible machine learning benchmarks for DataPruning — an ML dataset optimization platform designed to reduce redundant training samples, improve training efficiency, and preserve predictive performance.
+
+These benchmarks evaluate model accuracy, F1 score, regression quality, training speed, and dataset reduction across real-world machine learning datasets using a leak-free scientific methodology.
+
+## Why These Benchmarks Matter
+
+Machine learning performance claims are often difficult to validate.
+
+These benchmarks are designed to transparently evaluate when dataset optimization preserves model quality, improves training efficiency, and where limitations may exist.
+
+Our goal is scientific transparency, not cherry-picked results.
 
 ## What This Repository Contains
 
-- ✅ **Benchmark metrics** — structured JSON results for each dataset
-- ✅ **Comparison charts** — accuracy, training time, reduction, class distribution
-- ✅ **Full methodology** — detailed reproduction steps
-- ✅ **Fairness guarantees** — verified leak-free evaluation
+- ✅ Benchmark metrics — structured JSON results for every benchmark
+- ✅ Comparison charts — accuracy, training time, reduction, and class distribution visualizations
+- ✅ Methodology reports — detailed benchmark explanations and reproduction notes
+- ✅ Fairness guarantees — leak-free evaluation methodology
 
-This repository does **not** contain any DataPruning source code, proprietary algorithms, or implementation details. It is purely an output directory for scientific validation.
+This repository contains benchmark outputs only.
+
+It does not include proprietary DataPruning implementation details, optimization logic, or private production infrastructure.
 
 ## Benchmark Methodology
 
-### Leak-Free Design
+### Leak-Free Evaluation Design
 
-Every benchmark follows a strict split-first protocol to prevent data leakage:
+Every benchmark follows a strict split-first protocol to prevent train/test leakage:
 
-1. **Dataset loaded** — from a verified public source
-2. **Train/Test split** — 80/20 stratified split (random seed 42) **before any optimization**
-3. **Optimization applied to training set only** — the test set is never touched
-4. **Identical models trained** on both original and optimized training data
-5. **Both models evaluated** on the same untouched test set
-6. **Comparison** — the only variable is training data quality
+1. Dataset loaded — from a verified public source
+2. Train/Test split — 80/20 split (stratified for classification) using a fixed random seed (42) before optimization
+3. Optimization applied to training data only — the test set is never modified or optimized
+4. Identical models trained — same preprocessing, same hyperparameters, same experimental setup
+5. Evaluation on untouched test data — both original and optimized models are evaluated on the exact same unseen data
+6. Comparison — the only variable is training dataset quality and size
 
 ### Fairness Principles
 
-- Same train/test split for original and optimized
-- Same random seed (42) for reproducibility
-- Same model hyperparameters
+All benchmarks follow strict fairness constraints:
+
+- Same train/test split
+- Same random seed (42)
 - Same preprocessing pipeline
+- Same model hyperparameters
 - No retuning after optimization
 - Evaluation on untouched test data only
 
 ## Benchmark Coverage
 
-| Category | Example Dataset | Description |
-|----------|----------------|-------------|
-| Binary Classification | Bank Marketing, Adult Income, Breast Cancer | Predict a binary outcome |
-| Multiclass Classification | Wine Quality, Dry Bean | Predict one of several classes |
-| Regression | California Housing | Predict a continuous value |
-| Imbalanced Data | Adult Income | Uneven class distribution |
-| Small Datasets | Breast Cancer | < 1,000 rows |
-| Larger Datasets | Bank Marketing, Adult Income | > 10,000 rows |
+Benchmarks span multiple machine learning scenarios to evaluate robustness across different dataset characteristics.
+
+| Category | Example Dataset | Purpose |
+|----------|----------------|---------|
+| Binary Classification | Bank Marketing, Adult Income | Binary prediction tasks |
+| Multiclass Classification | Wine Quality, Dry Bean | Multiple target classes |
+| Regression | California Housing | Continuous target prediction |
+| Imbalanced Data | Adult Income, Breast Cancer | Uneven class distributions |
+| Small Datasets | Breast Cancer | Low-row datasets |
+| Larger Datasets | Bank Marketing, Adult Income | Higher-scale tabular data |
 
 ## Repository Structure
 
 ```
 benchmarks/
-├── index.json                        # Registry consumed by datapruning.com
+├── index.json
 ├── bank_marketing/
-│   ├── metrics/results.json          # All numeric metrics
-│   ├── charts/*.png                  # Comparison charts
-│   └── REPORT.md                     # Full methodology + results
+│   ├── metrics/results.json
+│   ├── charts/*.png
+│   └── REPORT.md
 ├── adult_income/
-│   └── ...
 ├── wine_quality/
-│   └── ...
 ├── dry_bean/
-│   └── ...
 ├── breast_cancer/
-│   └── ...
 ├── california_housing/
-│   └── ...
-├── README.md                         # This file
+├── README.md
 └── .gitignore
 ```
 
-## Reproducing Benchmarks
+## Reproducibility
 
-To reproduce these results:
+All benchmark outputs are generated using the same production optimization pipeline powering DataPruning.
 
-```bash
-git clone https://github.com/DataPruning/benchmarks.git
-# Clone the private demo_backend repo (requires access)
-# Run: python -m benchmark_runner.run --config benchmark_runner/datasets.json --output ../benchmarks-public --runs 3
-```
+Each benchmark includes:
+- dataset source references
+- evaluation methodology
+- structured metrics
+- comparison charts
+- reproducibility notes
+
+Public benchmark outputs are designed for transparent independent review.
 
 ## Dataset Licensing
 
-This repository does not redistribute original datasets. Users must download datasets from their original sources (linked in each benchmark's REPORT.md). Individual dataset licenses apply.
+This repository does not redistribute original datasets.
+
+Datasets must be obtained from their original public sources. Licensing terms vary by dataset and should be verified independently.
+
+## Learn More
+
+Website: https://www.datapruning.com
+
+Explore benchmarks: https://www.datapruning.com/benchmarks
 
 ## License
 
-The benchmark data, metrics, and charts in this repository are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+All benchmark content © DataPruning. Contact us for reuse permissions.
