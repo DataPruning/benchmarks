@@ -1,6 +1,6 @@
 # DataPruning Official Benchmarks
 
-Reproducible machine learning benchmarks for DataPruning — an ML dataset optimization platform designed to reduce redundant training samples, improve training efficiency, and preserve predictive performance.
+Reproducible machine learning benchmarks for DataPruning, an ML dataset optimization platform designed to reduce redundant training samples, improve training efficiency, and preserve predictive performance.
 
 These benchmarks evaluate model accuracy, F1 score, regression quality, training speed, and dataset reduction across real-world machine learning datasets using a leak-free scientific methodology.
 
