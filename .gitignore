@@ -1,12 +1,11 @@
-# Ignore generated dataset files (download from source or generate via runner)
+# Ignore dataset files (download from source, or generate locally)
 *.csv
-pruned/
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Editor
+# Editor files
 .vscode/
 .idea/
 *.swp

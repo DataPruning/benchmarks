@@ -18406,13 +18406,12 @@
         "reduction": 0.0
       }
     },
-    "methodology": "1. Original dataset loaded and target column determined\n2. Dataset split into train (80%) and test (20%) with seed 42 (stratified for classification)\n3. Target column moved to last position (DataPruning convention)\n4. Preprocessing: boolean mapping, NaN imputation, one-hot encoding, label encoding\n5. Train/test feature spaces aligned (intersection of one-hot columns)\n6. DataPruning optimization applied to TRAINING SET ONLY — test set untouched\n7. Safety layer: reduction cap + class preservation (train set only)\n8. Models trained on original train set and optimized train set\n9. Both evaluated on the SAME untouched test set\n10. Delta = Optimized − Original (positive = improvement after optimization)",
+    "methodology": "1. Original dataset loaded and target column determined\n2. Dataset split into train (80%) and test (20%) with seed 42 (stratified for classification)\n3. Target column moved to last position (DataPruning convention)\n4. Preprocessing: standardized preprocessing and feature alignment\n5. Train/test feature spaces aligned (intersection of one-hot columns)\n6. DataPruning optimization applied to TRAINING SET ONLY — test set untouched\n7. Safety layer: reduction cap + class preservation (train set only)\n8. Models trained on original train set and optimized train set\n9. Both evaluated on the SAME untouched test set\n10. Delta = Optimized − Original (positive = improvement after optimization)",
     "reproducibility_notes": {
       "train_test_seed": 42,
       "train_test_split": 0.2,
       "stratified": false,
-      "feature_alignment": "intersection of one-hot encoded columns",
-      "num_steps": 400
+      "feature_alignment": "aligned feature spaces (train/test)"
     }
   },
   "models": {
