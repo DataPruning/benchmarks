@@ -1,8 +1,50 @@
 {
   "benchmarks": [
     {
+      "name": "adult_income",
+      "title": "Adult Income",
+      "original_rows": 32561,
+      "train_rows": 26048,
+      "test_rows": 6513,
+      "kept_rows": 15628,
+      "reduction_percentage": 40.0,
+      "core_runtime_seconds": 19.6424,
+      "num_features": 103,
+      "num_classes": 2,
+      "task_type": "classification",
+      "target_column": "income",
+      "integrity": {
+        "structure_preserved": true,
+        "target_preserved": true,
+        "columns_preserved": true,
+        "class_distribution_maintained": true,
+        "missing_classes": []
+      }
+    },
+    {
+      "name": "bank_marketing",
+      "title": "Bank Marketing",
+      "original_rows": 41188,
+      "train_rows": 32950,
+      "test_rows": 8238,
+      "kept_rows": 19770,
+      "reduction_percentage": 40.0,
+      "core_runtime_seconds": 23.2824,
+      "num_features": 62,
+      "num_classes": 2,
+      "task_type": "classification",
+      "target_column": "y",
+      "integrity": {
+        "structure_preserved": true,
+        "target_preserved": true,
+        "columns_preserved": true,
+        "class_distribution_maintained": true,
+        "missing_classes": []
+      }
+    },
+    {
       "name": "breast_cancer",
-      "title": "Breast Cancer Wisconsin",
+      "title": "Breast Cancer",
       "original_rows": 569,
       "train_rows": 455,
       "test_rows": 114,
@@ -13,6 +55,69 @@
       "num_classes": 2,
       "task_type": "classification",
       "target_column": "target",
+      "integrity": {
+        "structure_preserved": true,
+        "target_preserved": true,
+        "columns_preserved": true,
+        "class_distribution_maintained": true,
+        "missing_classes": []
+      }
+    },
+    {
+      "name": "california_housing",
+      "title": "California Housing",
+      "original_rows": 20640,
+      "train_rows": 16512,
+      "test_rows": 4128,
+      "kept_rows": 10586,
+      "reduction_percentage": 35.89,
+      "core_runtime_seconds": 312.0658,
+      "num_features": 8,
+      "num_classes": 3675,
+      "task_type": "regression",
+      "target_column": "MedHouseVal",
+      "integrity": {
+        "structure_preserved": true,
+        "target_preserved": true,
+        "columns_preserved": true,
+        "class_distribution_maintained": true,
+        "missing_classes": []
+      }
+    },
+    {
+      "name": "dry_bean",
+      "title": "Dry Bean",
+      "original_rows": 13611,
+      "train_rows": 10888,
+      "test_rows": 2723,
+      "kept_rows": 5440,
+      "reduction_percentage": 50.04,
+      "core_runtime_seconds": 12.5406,
+      "num_features": 16,
+      "num_classes": 7,
+      "task_type": "classification",
+      "target_column": "Class",
+      "integrity": {
+        "structure_preserved": true,
+        "target_preserved": true,
+        "columns_preserved": true,
+        "class_distribution_maintained": true,
+        "missing_classes": []
+      }
+    },
+    {
+      "name": "wine_quality",
+      "title": "Wine Quality",
+      "original_rows": 1599,
+      "train_rows": 1279,
+      "test_rows": 320,
+      "kept_rows": 895,
+      "reduction_percentage": 30.02,
+      "core_runtime_seconds": 6.818,
+      "num_features": 11,
+      "num_classes": 6,
+      "task_type": "classification",
+      "target_column": "quality",
       "integrity": {
         "structure_preserved": true,
         "target_preserved": true,
