@@ -1,4 +1,25 @@
 {
-  "benchmarks": [],
-  "_note": "Run the benchmark runner to populate this file: python -m benchmark_runner.run --config benchmark_runner/datasets.json --output ../benchmarks-public --runs 3"
+  "benchmarks": [
+    {
+      "name": "breast_cancer",
+      "title": "Breast Cancer Wisconsin",
+      "original_rows": 569,
+      "train_rows": 455,
+      "test_rows": 114,
+      "kept_rows": 364,
+      "reduction_percentage": 20.0,
+      "core_runtime_seconds": 0.0006,
+      "num_features": 30,
+      "num_classes": 2,
+      "task_type": "classification",
+      "target_column": "target",
+      "integrity": {
+        "structure_preserved": true,
+        "target_preserved": true,
+        "columns_preserved": true,
+        "class_distribution_maintained": true,
+        "missing_classes": []
+      }
+    }
+  ]
 }

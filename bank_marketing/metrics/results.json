@@ -1,0 +1,272 @@
+{
+  "benchmark": {
+    "name": "bank_marketing",
+    "title": "Bank Marketing",
+    "description": "Predict term deposit subscription from direct marketing phone surveys â€” binary classification, ~41K rows, mixed numeric/categorical.",
+    "source": "UCI Machine Learning Repository",
+    "url": "https://archive.ics.uci.edu/dataset/222/bank+marketing"
+  },
+  "pipeline": {
+    "original_rows": 41188,
+    "train_rows": 32950,
+    "test_rows": 8238,
+    "kept_rows": 19770,
+    "reduction_percentage": 40.0,
+    "core_runtime_seconds": 23.2824,
+    "total_runtime_seconds": 25.1793,
+    "num_features": 62,
+    "num_classes": 2,
+    "task_type": "classification",
+    "target_column": "y",
+    "timestamp": "2026-05-14T01:00:53.550879+00:00",
+    "integrity": {
+      "structure_preserved": true,
+      "target_preserved": true,
+      "columns_preserved": true,
+      "class_distribution_maintained": true,
+      "missing_classes": []
+    },
+    "safety_adjustments": [
+      "reduction_cap_applied"
+    ],
+    "curve_data": {
+      "0": {
+        "total": 29238,
+        "kept": 17578,
+        "reduction": 39.88
+      },
+      "1": {
+        "total": 3712,
+        "kept": 2192,
+        "reduction": 40.95
+      }
+    },
+    "methodology": "1. Original dataset loaded and target column determined\n2. Dataset split into train (80%) and test (20%) with seed 42 (stratified for classification)\n3. Target column moved to last position (DataPruning convention)\n4. Preprocessing: boolean mapping, NaN imputation, one-hot encoding, label encoding\n5. Train/test feature spaces aligned (intersection of one-hot columns)\n6. DataPruning optimization applied to TRAINING SET ONLY — test set untouched\n7. Safety layer: reduction cap + class preservation (train set only)\n8. Models trained on original train set and optimized train set\n9. Both evaluated on the SAME untouched test set\n10. Delta = Optimized − Original (positive = improvement after optimization)",
+    "reproducibility_notes": {
+      "train_test_seed": 42,
+      "train_test_split": 0.2,
+      "stratified": true,
+      "feature_alignment": "intersection of one-hot encoded columns",
+      "num_steps": 400
+    }
+  },
+  "models": {
+    "Logistic Regression": {
+      "original": {
+        "accuracy": 0.9154,
+        "precision": 0.9053,
+        "recall": 0.9154,
+        "f1": 0.9057,
+        "training_time_seconds": 19.4948,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.9154,
+          "precision": 0.9053,
+          "recall": 0.9154,
+          "f1": 0.9057,
+          "training_time_seconds": 17.7745
+        },
+        "_max": {
+          "accuracy": 0.9154,
+          "precision": 0.9053,
+          "recall": 0.9154,
+          "f1": 0.9057,
+          "training_time_seconds": 21.8155
+        }
+      },
+      "pruned": {
+        "accuracy": 0.9154,
+        "precision": 0.9052,
+        "recall": 0.9154,
+        "f1": 0.9053,
+        "training_time_seconds": 11.8928,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.9154,
+          "precision": 0.9052,
+          "recall": 0.9154,
+          "f1": 0.9053,
+          "training_time_seconds": 11.0088
+        },
+        "_max": {
+          "accuracy": 0.9154,
+          "precision": 0.9052,
+          "recall": 0.9154,
+          "f1": 0.9053,
+          "training_time_seconds": 12.5925
+        }
+      },
+      "difference": {
+        "accuracy": 0.0,
+        "precision": -0.0001,
+        "recall": 0.0,
+        "f1": -0.0004,
+        "training_time_seconds": 7.602,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.0,
+          "precision": -0.0001,
+          "recall": 0.0,
+          "f1": -0.0004,
+          "training_time_seconds": 5.182
+        },
+        "_max": {
+          "accuracy": 0.0,
+          "precision": -0.0001,
+          "recall": 0.0,
+          "f1": -0.0004,
+          "training_time_seconds": 9.7384
+        }
+      },
+      "_runs": 3
+    },
+    "Random Forest": {
+      "original": {
+        "accuracy": 0.9188,
+        "precision": 0.9104,
+        "recall": 0.9188,
+        "f1": 0.9117,
+        "training_time_seconds": 1.9702,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.9188,
+          "precision": 0.9104,
+          "recall": 0.9188,
+          "f1": 0.9117,
+          "training_time_seconds": 1.6333
+        },
+        "_max": {
+          "accuracy": 0.9188,
+          "precision": 0.9104,
+          "recall": 0.9188,
+          "f1": 0.9117,
+          "training_time_seconds": 2.3597
+        }
+      },
+      "pruned": {
+        "accuracy": 0.9142,
+        "precision": 0.9043,
+        "recall": 0.9142,
+        "f1": 0.9059,
+        "training_time_seconds": 1.1041,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.9142,
+          "precision": 0.9043,
+          "recall": 0.9142,
+          "f1": 0.9059,
+          "training_time_seconds": 0.8739
+        },
+        "_max": {
+          "accuracy": 0.9142,
+          "precision": 0.9043,
+          "recall": 0.9142,
+          "f1": 0.9059,
+          "training_time_seconds": 1.2396
+        }
+      },
+      "difference": {
+        "accuracy": -0.0046,
+        "precision": -0.0061,
+        "recall": -0.0046,
+        "f1": -0.0058,
+        "training_time_seconds": 0.866,
+        "_runs": 3,
+        "_min": {
+          "accuracy": -0.0046,
+          "precision": -0.0061,
+          "recall": -0.0046,
+          "f1": -0.0058,
+          "training_time_seconds": 0.7186
+        },
+        "_max": {
+          "accuracy": -0.0046,
+          "precision": -0.0061,
+          "recall": -0.0046,
+          "f1": -0.0058,
+          "training_time_seconds": 1.1201
+        }
+      },
+      "_runs": 3
+    },
+    "XGBoost": {
+      "original": {
+        "accuracy": 0.9202,
+        "precision": 0.916,
+        "recall": 0.9202,
+        "f1": 0.9177,
+        "training_time_seconds": 0.4213,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.9202,
+          "precision": 0.916,
+          "recall": 0.9202,
+          "f1": 0.9177,
+          "training_time_seconds": 0.3895
+        },
+        "_max": {
+          "accuracy": 0.9202,
+          "precision": 0.916,
+          "recall": 0.9202,
+          "f1": 0.9177,
+          "training_time_seconds": 0.4666
+        }
+      },
+      "pruned": {
+        "accuracy": 0.916,
+        "precision": 0.9109,
+        "recall": 0.916,
+        "f1": 0.9129,
+        "training_time_seconds": 0.2876,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.916,
+          "precision": 0.9109,
+          "recall": 0.916,
+          "f1": 0.9129,
+          "training_time_seconds": 0.2386
+        },
+        "_max": {
+          "accuracy": 0.916,
+          "precision": 0.9109,
+          "recall": 0.916,
+          "f1": 0.9129,
+          "training_time_seconds": 0.3737
+        }
+      },
+      "difference": {
+        "accuracy": -0.0042,
+        "precision": -0.0051,
+        "recall": -0.0042,
+        "f1": -0.0048,
+        "training_time_seconds": 0.1337,
+        "_runs": 3,
+        "_min": {
+          "accuracy": -0.0042,
+          "precision": -0.0051,
+          "recall": -0.0042,
+          "f1": -0.0048,
+          "training_time_seconds": 0.0929
+        },
+        "_max": {
+          "accuracy": -0.0042,
+          "precision": -0.0051,
+          "recall": -0.0042,
+          "f1": -0.0048,
+          "training_time_seconds": 0.1574
+        }
+      },
+      "_runs": 3
+    },
+    "_runs": 3
+  },
+  "model_task_type": "classification",
+  "model_runs": 3,
+  "charts": [
+    "accuracy_comparison.png",
+    "time_comparison.png",
+    "reduction.png",
+    "class_distribution.png"
+  ],
+  "data_redistribution_policy": "This repository contains only metrics, charts, and methodology. Original datasets must be downloaded from their respective sources using the provided download scripts. Pruned output is the TRAINING SUBSET only — processed by the DataPruning pipeline, not the original full dataset. Users should verify licensing terms before redistributing any dataset files."
+}

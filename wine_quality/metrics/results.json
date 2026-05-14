@@ -1,0 +1,292 @@
+{
+  "benchmark": {
+    "name": "wine_quality",
+    "title": "Wine Quality",
+    "description": "Predict wine quality score (0â€“10) from physicochemical tests â€” multiclass classification, ~6.5K rows, all numeric.",
+    "source": "UCI Machine Learning Repository",
+    "url": "https://archive.ics.uci.edu/dataset/186/wine+quality"
+  },
+  "pipeline": {
+    "original_rows": 1599,
+    "train_rows": 1279,
+    "test_rows": 320,
+    "kept_rows": 895,
+    "reduction_percentage": 30.02,
+    "core_runtime_seconds": 6.818,
+    "total_runtime_seconds": 6.951,
+    "num_features": 11,
+    "num_classes": 6,
+    "task_type": "classification",
+    "target_column": "quality",
+    "timestamp": "2026-05-14T01:06:35.643581+00:00",
+    "integrity": {
+      "structure_preserved": true,
+      "target_preserved": true,
+      "columns_preserved": true,
+      "class_distribution_maintained": true,
+      "missing_classes": []
+    },
+    "safety_adjustments": [
+      "reduction_cap_applied"
+    ],
+    "curve_data": {
+      "0": {
+        "total": 510,
+        "kept": 348,
+        "reduction": 31.76
+      },
+      "1": {
+        "total": 545,
+        "kept": 396,
+        "reduction": 27.34
+      },
+      "2": {
+        "total": 159,
+        "kept": 103,
+        "reduction": 35.22
+      },
+      "3": {
+        "total": 8,
+        "kept": 6,
+        "reduction": 25.0
+      },
+      "4": {
+        "total": 42,
+        "kept": 30,
+        "reduction": 28.57
+      },
+      "5": {
+        "total": 15,
+        "kept": 12,
+        "reduction": 20.0
+      }
+    },
+    "methodology": "1. Original dataset loaded and target column determined\n2. Dataset split into train (80%) and test (20%) with seed 42 (stratified for classification)\n3. Target column moved to last position (DataPruning convention)\n4. Preprocessing: boolean mapping, NaN imputation, one-hot encoding, label encoding\n5. Train/test feature spaces aligned (intersection of one-hot columns)\n6. DataPruning optimization applied to TRAINING SET ONLY — test set untouched\n7. Safety layer: reduction cap + class preservation (train set only)\n8. Models trained on original train set and optimized train set\n9. Both evaluated on the SAME untouched test set\n10. Delta = Optimized − Original (positive = improvement after optimization)",
+    "reproducibility_notes": {
+      "train_test_seed": 42,
+      "train_test_split": 0.2,
+      "stratified": true,
+      "feature_alignment": "intersection of one-hot encoded columns",
+      "num_steps": 400
+    }
+  },
+  "models": {
+    "Logistic Regression": {
+      "original": {
+        "accuracy": 0.5875,
+        "precision": 0.5896,
+        "recall": 0.5875,
+        "f1": 0.5579,
+        "training_time_seconds": 1.2703,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.5875,
+          "precision": 0.5896,
+          "recall": 0.5875,
+          "f1": 0.5579,
+          "training_time_seconds": 1.2588
+        },
+        "_max": {
+          "accuracy": 0.5875,
+          "precision": 0.5896,
+          "recall": 0.5875,
+          "f1": 0.5579,
+          "training_time_seconds": 1.2859
+        }
+      },
+      "pruned": {
+        "accuracy": 0.5906,
+        "precision": 0.5741,
+        "recall": 0.5906,
+        "f1": 0.5601,
+        "training_time_seconds": 1.0617,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.5906,
+          "precision": 0.5741,
+          "recall": 0.5906,
+          "f1": 0.5601,
+          "training_time_seconds": 0.9944
+        },
+        "_max": {
+          "accuracy": 0.5906,
+          "precision": 0.5741,
+          "recall": 0.5906,
+          "f1": 0.5601,
+          "training_time_seconds": 1.1635
+        }
+      },
+      "difference": {
+        "accuracy": 0.0031,
+        "precision": -0.0155,
+        "recall": 0.0031,
+        "f1": 0.0022,
+        "training_time_seconds": 0.2086,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.0031,
+          "precision": -0.0155,
+          "recall": 0.0031,
+          "f1": 0.0022,
+          "training_time_seconds": 0.1224
+        },
+        "_max": {
+          "accuracy": 0.0031,
+          "precision": -0.0155,
+          "recall": 0.0031,
+          "f1": 0.0022,
+          "training_time_seconds": 0.2644
+        }
+      },
+      "_runs": 3
+    },
+    "Random Forest": {
+      "original": {
+        "accuracy": 0.6844,
+        "precision": 0.6636,
+        "recall": 0.6844,
+        "f1": 0.6687,
+        "training_time_seconds": 0.2662,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.6844,
+          "precision": 0.6636,
+          "recall": 0.6844,
+          "f1": 0.6687,
+          "training_time_seconds": 0.2639
+        },
+        "_max": {
+          "accuracy": 0.6844,
+          "precision": 0.6636,
+          "recall": 0.6844,
+          "f1": 0.6687,
+          "training_time_seconds": 0.2698
+        }
+      },
+      "pruned": {
+        "accuracy": 0.6281,
+        "precision": 0.6016,
+        "recall": 0.6281,
+        "f1": 0.6082,
+        "training_time_seconds": 0.2354,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.6281,
+          "precision": 0.6016,
+          "recall": 0.6281,
+          "f1": 0.6082,
+          "training_time_seconds": 0.2251
+        },
+        "_max": {
+          "accuracy": 0.6281,
+          "precision": 0.6016,
+          "recall": 0.6281,
+          "f1": 0.6082,
+          "training_time_seconds": 0.2451
+        }
+      },
+      "difference": {
+        "accuracy": -0.0563,
+        "precision": -0.0619,
+        "recall": -0.0563,
+        "f1": -0.0604,
+        "training_time_seconds": 0.0308,
+        "_runs": 3,
+        "_min": {
+          "accuracy": -0.0563,
+          "precision": -0.0619,
+          "recall": -0.0563,
+          "f1": -0.0604,
+          "training_time_seconds": 0.0188
+        },
+        "_max": {
+          "accuracy": -0.0563,
+          "precision": -0.0619,
+          "recall": -0.0563,
+          "f1": -0.0604,
+          "training_time_seconds": 0.0398
+        }
+      },
+      "_runs": 3
+    },
+    "XGBoost": {
+      "original": {
+        "accuracy": 0.6687,
+        "precision": 0.6535,
+        "recall": 0.6687,
+        "f1": 0.6599,
+        "training_time_seconds": 0.3515,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.6687,
+          "precision": 0.6535,
+          "recall": 0.6687,
+          "f1": 0.6599,
+          "training_time_seconds": 0.3223
+        },
+        "_max": {
+          "accuracy": 0.6687,
+          "precision": 0.6535,
+          "recall": 0.6687,
+          "f1": 0.6599,
+          "training_time_seconds": 0.4073
+        }
+      },
+      "pruned": {
+        "accuracy": 0.6156,
+        "precision": 0.6233,
+        "recall": 0.6156,
+        "f1": 0.6066,
+        "training_time_seconds": 0.3136,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.6156,
+          "precision": 0.6233,
+          "recall": 0.6156,
+          "f1": 0.6066,
+          "training_time_seconds": 0.25
+        },
+        "_max": {
+          "accuracy": 0.6156,
+          "precision": 0.6233,
+          "recall": 0.6156,
+          "f1": 0.6066,
+          "training_time_seconds": 0.4334
+        }
+      },
+      "difference": {
+        "accuracy": -0.0531,
+        "precision": -0.0302,
+        "recall": -0.0531,
+        "f1": -0.0533,
+        "training_time_seconds": 0.0379,
+        "_runs": 3,
+        "_min": {
+          "accuracy": -0.0531,
+          "precision": -0.0302,
+          "recall": -0.0531,
+          "f1": -0.0533,
+          "training_time_seconds": -0.0261
+        },
+        "_max": {
+          "accuracy": -0.0531,
+          "precision": -0.0302,
+          "recall": -0.0531,
+          "f1": -0.0533,
+          "training_time_seconds": 0.0723
+        }
+      },
+      "_runs": 3
+    },
+    "_runs": 3
+  },
+  "model_task_type": "classification",
+  "model_runs": 3,
+  "charts": [
+    "accuracy_comparison.png",
+    "time_comparison.png",
+    "reduction.png",
+    "class_distribution.png"
+  ],
+  "data_redistribution_policy": "This repository contains only metrics, charts, and methodology. Original datasets must be downloaded from their respective sources using the provided download scripts. Pruned output is the TRAINING SUBSET only — processed by the DataPruning pipeline, not the original full dataset. Users should verify licensing terms before redistributing any dataset files."
+}

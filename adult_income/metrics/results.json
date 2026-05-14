@@ -1,0 +1,272 @@
+{
+  "benchmark": {
+    "name": "adult_income",
+    "title": "Adult Income",
+    "description": "Predict whether income exceeds $50K/yr from census data â€” binary classification, ~48K rows, mixed types, class imbalance.",
+    "source": "UCI Machine Learning Repository",
+    "url": "https://archive.ics.uci.edu/dataset/2/adult"
+  },
+  "pipeline": {
+    "original_rows": 32561,
+    "train_rows": 26048,
+    "test_rows": 6513,
+    "kept_rows": 15628,
+    "reduction_percentage": 40.0,
+    "core_runtime_seconds": 19.6424,
+    "total_runtime_seconds": 21.2798,
+    "num_features": 103,
+    "num_classes": 2,
+    "task_type": "classification",
+    "target_column": "income",
+    "timestamp": "2026-05-14T01:03:49.949517+00:00",
+    "integrity": {
+      "structure_preserved": true,
+      "target_preserved": true,
+      "columns_preserved": true,
+      "class_distribution_maintained": true,
+      "missing_classes": []
+    },
+    "safety_adjustments": [
+      "reduction_cap_applied"
+    ],
+    "curve_data": {
+      "0": {
+        "total": 6273,
+        "kept": 3694,
+        "reduction": 41.11
+      },
+      "1": {
+        "total": 19775,
+        "kept": 11934,
+        "reduction": 39.65
+      }
+    },
+    "methodology": "1. Original dataset loaded and target column determined\n2. Dataset split into train (80%) and test (20%) with seed 42 (stratified for classification)\n3. Target column moved to last position (DataPruning convention)\n4. Preprocessing: boolean mapping, NaN imputation, one-hot encoding, label encoding\n5. Train/test feature spaces aligned (intersection of one-hot columns)\n6. DataPruning optimization applied to TRAINING SET ONLY — test set untouched\n7. Safety layer: reduction cap + class preservation (train set only)\n8. Models trained on original train set and optimized train set\n9. Both evaluated on the SAME untouched test set\n10. Delta = Optimized − Original (positive = improvement after optimization)",
+    "reproducibility_notes": {
+      "train_test_seed": 42,
+      "train_test_split": 0.2,
+      "stratified": true,
+      "feature_alignment": "intersection of one-hot encoded columns",
+      "num_steps": 400
+    }
+  },
+  "models": {
+    "Logistic Regression": {
+      "original": {
+        "accuracy": 0.85,
+        "precision": 0.8433,
+        "recall": 0.85,
+        "f1": 0.8442,
+        "training_time_seconds": 21.3525,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.85,
+          "precision": 0.8433,
+          "recall": 0.85,
+          "f1": 0.8442,
+          "training_time_seconds": 20.367
+        },
+        "_max": {
+          "accuracy": 0.85,
+          "precision": 0.8433,
+          "recall": 0.85,
+          "f1": 0.8442,
+          "training_time_seconds": 22.3618
+        }
+      },
+      "pruned": {
+        "accuracy": 0.848,
+        "precision": 0.8409,
+        "recall": 0.848,
+        "f1": 0.8417,
+        "training_time_seconds": 12.5431,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.848,
+          "precision": 0.8409,
+          "recall": 0.848,
+          "f1": 0.8417,
+          "training_time_seconds": 11.7322
+        },
+        "_max": {
+          "accuracy": 0.848,
+          "precision": 0.8409,
+          "recall": 0.848,
+          "f1": 0.8417,
+          "training_time_seconds": 13.1338
+        }
+      },
+      "difference": {
+        "accuracy": -0.002,
+        "precision": -0.0024,
+        "recall": -0.002,
+        "f1": -0.0025,
+        "training_time_seconds": 8.8094,
+        "_runs": 3,
+        "_min": {
+          "accuracy": -0.002,
+          "precision": -0.0024,
+          "recall": -0.002,
+          "f1": -0.0025,
+          "training_time_seconds": 8.195
+        },
+        "_max": {
+          "accuracy": -0.002,
+          "precision": -0.0024,
+          "recall": -0.002,
+          "f1": -0.0025,
+          "training_time_seconds": 9.5984
+        }
+      },
+      "_runs": 3
+    },
+    "Random Forest": {
+      "original": {
+        "accuracy": 0.8584,
+        "precision": 0.8535,
+        "recall": 0.8584,
+        "f1": 0.8548,
+        "training_time_seconds": 1.9372,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.8584,
+          "precision": 0.8535,
+          "recall": 0.8584,
+          "f1": 0.8548,
+          "training_time_seconds": 1.7705
+        },
+        "_max": {
+          "accuracy": 0.8584,
+          "precision": 0.8535,
+          "recall": 0.8584,
+          "f1": 0.8548,
+          "training_time_seconds": 2.0715
+        }
+      },
+      "pruned": {
+        "accuracy": 0.8558,
+        "precision": 0.8506,
+        "recall": 0.8558,
+        "f1": 0.8519,
+        "training_time_seconds": 0.9413,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.8558,
+          "precision": 0.8506,
+          "recall": 0.8558,
+          "f1": 0.8519,
+          "training_time_seconds": 0.8867
+        },
+        "_max": {
+          "accuracy": 0.8558,
+          "precision": 0.8506,
+          "recall": 0.8558,
+          "f1": 0.8519,
+          "training_time_seconds": 1.0265
+        }
+      },
+      "difference": {
+        "accuracy": -0.0026,
+        "precision": -0.0029,
+        "recall": -0.0026,
+        "f1": -0.0029,
+        "training_time_seconds": 0.9959,
+        "_runs": 3,
+        "_min": {
+          "accuracy": -0.0026,
+          "precision": -0.0029,
+          "recall": -0.0026,
+          "f1": -0.0029,
+          "training_time_seconds": 0.744
+        },
+        "_max": {
+          "accuracy": -0.0026,
+          "precision": -0.0029,
+          "recall": -0.0026,
+          "f1": -0.0029,
+          "training_time_seconds": 1.1848
+        }
+      },
+      "_runs": 3
+    },
+    "XGBoost": {
+      "original": {
+        "accuracy": 0.8775,
+        "precision": 0.8735,
+        "recall": 0.8775,
+        "f1": 0.8741,
+        "training_time_seconds": 0.4326,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.8775,
+          "precision": 0.8735,
+          "recall": 0.8775,
+          "f1": 0.8741,
+          "training_time_seconds": 0.389
+        },
+        "_max": {
+          "accuracy": 0.8775,
+          "precision": 0.8735,
+          "recall": 0.8775,
+          "f1": 0.8741,
+          "training_time_seconds": 0.4907
+        }
+      },
+      "pruned": {
+        "accuracy": 0.8723,
+        "precision": 0.8678,
+        "recall": 0.8723,
+        "f1": 0.8684,
+        "training_time_seconds": 0.3113,
+        "_runs": 3,
+        "_min": {
+          "accuracy": 0.8723,
+          "precision": 0.8678,
+          "recall": 0.8723,
+          "f1": 0.8684,
+          "training_time_seconds": 0.2579
+        },
+        "_max": {
+          "accuracy": 0.8723,
+          "precision": 0.8678,
+          "recall": 0.8723,
+          "f1": 0.8684,
+          "training_time_seconds": 0.4019
+        }
+      },
+      "difference": {
+        "accuracy": -0.0052,
+        "precision": -0.0057,
+        "recall": -0.0052,
+        "f1": -0.0056,
+        "training_time_seconds": 0.1213,
+        "_runs": 3,
+        "_min": {
+          "accuracy": -0.0052,
+          "precision": -0.0057,
+          "recall": -0.0052,
+          "f1": -0.0056,
+          "training_time_seconds": 0.0888
+        },
+        "_max": {
+          "accuracy": -0.0052,
+          "precision": -0.0057,
+          "recall": -0.0052,
+          "f1": -0.0056,
+          "training_time_seconds": 0.1441
+        }
+      },
+      "_runs": 3
+    },
+    "_runs": 3
+  },
+  "model_task_type": "classification",
+  "model_runs": 3,
+  "charts": [
+    "accuracy_comparison.png",
+    "time_comparison.png",
+    "reduction.png",
+    "class_distribution.png"
+  ],
+  "data_redistribution_policy": "This repository contains only metrics, charts, and methodology. Original datasets must be downloaded from their respective sources using the provided download scripts. Pruned output is the TRAINING SUBSET only — processed by the DataPruning pipeline, not the original full dataset. Users should verify licensing terms before redistributing any dataset files."
+}

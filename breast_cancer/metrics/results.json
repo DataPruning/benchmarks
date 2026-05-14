@@ -1,0 +1,131 @@
+{
+  "benchmark": {
+    "name": "breast_cancer",
+    "title": "Breast Cancer Wisconsin",
+    "description": "Diagnose malignant vs benign tumors from cell features â€” binary classification, ~569 rows, small dataset, all numeric.",
+    "source": "UCI Machine Learning Repository / sklearn",
+    "url": "https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic"
+  },
+  "pipeline": {
+    "original_rows": 569,
+    "train_rows": 455,
+    "test_rows": 114,
+    "kept_rows": 364,
+    "reduction_percentage": 20.0,
+    "core_runtime_seconds": 0.0006,
+    "total_runtime_seconds": 0.1899,
+    "num_features": 30,
+    "num_classes": 2,
+    "task_type": "classification",
+    "target_column": "target",
+    "timestamp": "2026-05-14T01:47:34.486480+00:00",
+    "integrity": {
+      "structure_preserved": true,
+      "target_preserved": true,
+      "columns_preserved": true,
+      "class_distribution_maintained": true,
+      "missing_classes": []
+    },
+    "safety_adjustments": [],
+    "curve_data": {
+      "0": {
+        "total": 285,
+        "kept": 228,
+        "reduction": 20.0
+      },
+      "1": {
+        "total": 170,
+        "kept": 136,
+        "reduction": 20.0
+      }
+    },
+    "methodology": "1. Original dataset loaded and target column determined\n2. Dataset split into train (80%) and test (20%) with seed 42 (stratified for classification)\n3. Target column moved to last position (DataPruning convention)\n4. Preprocessing: boolean mapping, NaN imputation, one-hot encoding, label encoding\n5. Train/test feature spaces aligned (intersection of one-hot columns)\n6. DataPruning optimization applied to TRAINING SET ONLY — test set untouched\n7. Safety layer: reduction cap + class preservation (train set only)\n8. Models trained on original train set and optimized train set\n9. Both evaluated on the SAME untouched test set\n10. Delta = Optimized − Original (positive = improvement after optimization)",
+    "reproducibility_notes": {
+      "train_test_seed": 42,
+      "train_test_split": 0.2,
+      "stratified": true,
+      "feature_alignment": "intersection of one-hot encoded columns",
+      "num_steps": 300
+    }
+  },
+  "models": {
+    "Logistic Regression": {
+      "original": {
+        "accuracy": 0.964912,
+        "precision": 0.965185,
+        "recall": 0.964912,
+        "f1": 0.964725,
+        "training_time_seconds": 0.5661
+      },
+      "pruned": {
+        "accuracy": 0.938596,
+        "precision": 0.939042,
+        "recall": 0.938596,
+        "f1": 0.938743,
+        "training_time_seconds": 0.516
+      },
+      "difference": {
+        "accuracy": -0.026316,
+        "precision": -0.026143,
+        "recall": -0.026316,
+        "f1": -0.025982,
+        "training_time_seconds": 0.0501
+      }
+    },
+    "Random Forest": {
+      "original": {
+        "accuracy": 0.95614,
+        "precision": 0.956073,
+        "recall": 0.95614,
+        "f1": 0.956027,
+        "training_time_seconds": 0.1932
+      },
+      "pruned": {
+        "accuracy": 0.921053,
+        "precision": 0.923417,
+        "recall": 0.921053,
+        "f1": 0.921574,
+        "training_time_seconds": 0.1998
+      },
+      "difference": {
+        "accuracy": -0.035087,
+        "precision": -0.032656,
+        "recall": -0.035087,
+        "f1": -0.034453,
+        "training_time_seconds": -0.0066
+      }
+    },
+    "XGBoost": {
+      "original": {
+        "accuracy": 0.947368,
+        "precision": 0.94744,
+        "recall": 0.947368,
+        "f1": 0.947087,
+        "training_time_seconds": 0.0719
+      },
+      "pruned": {
+        "accuracy": 0.929825,
+        "precision": 0.933369,
+        "recall": 0.929825,
+        "f1": 0.930417,
+        "training_time_seconds": 0.0434
+      },
+      "difference": {
+        "accuracy": -0.017543,
+        "precision": -0.014071,
+        "recall": -0.017543,
+        "f1": -0.01667,
+        "training_time_seconds": 0.0285
+      }
+    }
+  },
+  "model_task_type": "classification",
+  "model_runs": 1,
+  "charts": [
+    "accuracy_comparison.png",
+    "time_comparison.png",
+    "reduction.png",
+    "class_distribution.png"
+  ],
+  "data_redistribution_policy": "This repository contains only metrics, charts, and methodology. Original datasets must be downloaded from their respective sources using the provided download scripts. Pruned output is the TRAINING SUBSET only — processed by the DataPruning pipeline, not the original full dataset. Users should verify licensing terms before redistributing any dataset files."
+}
